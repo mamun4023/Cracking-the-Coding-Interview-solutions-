@@ -1,4 +1,4 @@
-
+-----------Solution 1 ------------
 // without additional data structor
 // getting O(n2)
 // its a brute force technique 
@@ -19,5 +19,22 @@
 
 
 
+-----------Solution 2 ------------
+
+// with additional data structor hashing 
+// getting O(n)
+function Checking(arr){
+	let hash = new Set();
+	let len = arr.length;
+	for(let i = 0; i<len; i++){
+		if(hash.has(arr[i])){
+			return true;
+		}
+		hash.add(arr[i])
+	}
+	return false;
+}
+let data = "abcdc";
+console.log(Checking(data))
 
 
