@@ -1,0 +1,23 @@
+
+// without additional data structor
+// getting O(n2)
+// its a brute force technique 
+
+  function Checking(arr){
+    let len = arr.length;
+    for(let i = 0; i<len; i++){
+      for(let j = i+1; j<len; j++){
+        if(arr[i] === arr[j]){
+          return true
+        }
+      }
+    }
+    return false;
+  }
+  let data = "abcd";
+  console.log(Checking(data))
+
+
+
+
+
