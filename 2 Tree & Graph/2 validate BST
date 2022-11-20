@@ -1,0 +1,77 @@
+class Node{
+	constructor(data){
+		this.data = data;
+		this.left = null
+		this.right = null
+	}
+}
+
+
+
+class Tree{
+	constructor(){
+		this.root = null;
+	}
+
+	helperFunction(currNode, newNode){
+		if(newNode.data < currNode.data){
+			if(currNode.left == null){
+				currNode.left = newNode
+			}else{
+				this.helperFunction(currNode.left, newNode)
+			}
+		}else{
+			if(currNode.right == null){
+				currNode.right = newNode;
+			}else{
+				this.helperFunction(currNode.right, newNode)
+			}
+		}
+	}
+
+	Insert(data){
+		let newNode = new Node(data);
+		if(this.root == null){
+			this.root = newNode;
+		}else{
+			this.helperFunction(this.root, newNode)
+		}
+	}
+
+
+
+	Inorder(node, arr){
+		let index = 0;
+		if(node != null){
+			this.Inorder(node.left, arr);
+			arr.push(node.data)
+			this.Inorder(node.right, arr);
+
+		}
+	}
+
+	isBST(){
+		let arr = [];
+		this.Inorder(this.root, arr)
+		for(let i = 0; i<arr.length; i++){
+			if(arr[i] <= arr[i-1]){
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+
+	getRoot(){
+		return this.root;
+	}
+}
+
+
+let obj = new Tree();
+obj.Insert(10);
+obj.Insert(5);
+obj.Insert(12);
+obj.Insert(100);
+console.log(obj.isBST())
