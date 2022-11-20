@@ -1,0 +1,73 @@
+<script type="text/javascript">
+
+
+
+
+class Node{
+	constructor(data){
+		this.data = data;
+		this.next = null;
+	}
+}
+
+
+class LinkedList{
+	constructor(){
+		this.head = null;
+	}
+
+	Insert(data){
+		let newNode = new Node(data);
+		if(this.head == null){
+			this.head = newNode;
+		}else{
+			let traverse = this.head;
+			while(traverse.next){
+				traverse = traverse.next;
+			}
+
+			traverse.next = newNode;
+		}
+	}
+
+	Display(){
+		let traverse = this.head;
+		while(traverse){
+			document.write(" ", traverse.data);
+			traverse = traverse.next;
+		}
+	}
+
+	RemoveDuplicate(){
+		let prev = this.head;
+		let curr = prev.next;
+		let set = new Set();
+		set.add(prev.data)
+
+		while(curr){
+			if(set.has(curr.data)){
+				prev.next = curr.next;
+			}else{
+				set.add(curr.data);
+				prev = curr;
+			}
+			curr = curr.next;
+		}
+	}
+}
+
+
+let obj = new LinkedList();
+obj.Insert(10);
+
+obj.Insert(40);
+obj.Insert(10);
+obj.Insert(50);
+obj.Insert(10);
+obj.Display();
+document.write('<br/>')
+obj.RemoveDuplicate();
+obj.Display();
+
+
+</script>`
